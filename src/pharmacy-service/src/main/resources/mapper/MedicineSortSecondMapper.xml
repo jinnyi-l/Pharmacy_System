@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yjx.mapper.MedicineSortSecondMapper">
+
+    <select id="getAllSecondCategory" resultType="com.yjx.dto.CategorySecondDto">
+        select pmss.id value ,pmss.second_sort label
+        from pharmacy.medicine_sort_second pmss
+        where pmss.first_sort_id = #{1}
+          and pmss.deleted = 0
+          and pmss.status = 1
+        ORDER BY pmss.id
+    </select>
+</mapper>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yjx.mapper.MedicineSortMapper">
+
+    <delete id="deleteBySortId">
+        delete
+        FROM pharmacy.medicine_sort
+        where sort_id = #{sortId}
+    </delete>
+
+    <select id="selectSortPage" resultType="com.yjx.entity.MedicineSort">
+        select sort_id,
+        category,
+        upload_user,
+        status,
+        gmt_create
+        from pharmacy.medicine_sort
+        where deleted = 0
+        <if test="idOrCategoryOrUploadUser != null and '' != idOrCategoryOrUploadUser">
+            and (sort_id like concat(#{idOrCategoryOrUploadUser},'%')
+            or category like concat(#{idOrCategoryOrUploadUser},'%')
+            or upload_user like concat(#{idOrCategoryOrUploadUser},'%'))
+        </if>
+    </select>
+
+    <select id="getAllFirstCategory" resultType="com.yjx.dto.CategoryDto">
+        select pms.sort_id value, pms.category label
+        from pharmacy.medicine_sort as pms
+        where deleted = 0
+          and status = 1
+        order by pms.sort_id ASC
+    </select>
+
+</mapper>

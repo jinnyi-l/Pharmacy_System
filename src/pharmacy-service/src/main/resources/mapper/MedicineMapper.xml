@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yjx.mapper.MedicineMapper">
+
+    <sql id="medicine">
+        m.`id`,
+        m.`picture`,
+        m.`name`,
+        m.`price`,
+        m.`description`,
+        m.`stock`,
+        m.`status`,
+        m.`gmt_create`,
+        m.`upload_user`,
+        m.`manufacturer`,
+        m.`approval_number`,
+    </sql>
+
+    <select id="searchMedicine" resultType="com.yjx.entity.Medicine">
+        select
+        <include refid="medicine"/>
+        ms.`category` sort,
+        mss.`second_sort` secondSort
+        from pharmacy.medicine as m,
+        pharmacy.medicine_sort as ms,
+        pharmacy.medicine_sort_second as mss
+        where m.deleted = 0
+        and ms.deleted=0
+        and mss.deleted=0
+        and m.sort = ms.sort_id
+        and m.second_sort= mss.id
+        <if test="nameOrIdOrSort != null and '' != nameOrIdOrSort">
+            and (m.id = #{nameOrIdOrSort}
+            or m.name like concat('%',#{nameOrIdOrSort},'%')
+            or ms.category like concat('%',#{nameOrIdOrSort},'%'))
+        </if>
+    </select>
+
+    <select id="searchMedicine2" resultType="com.yjx.entity.Medicine">
+        select
+        <include refid="medicine"/>
+        ms.`category` sort,
+        mss.`second_sort` secondSort
+        from pharmacy.medicine as m,
+        pharmacy.medicine_sort as ms,
+        pharmacy.medicine_sort_second as mss
+        where m.deleted = 0
+        and ms.deleted=0
+        and mss.deleted=0
+        and m.status = 1
+        and ms.status = 1
+        and mss.status = 1
+        and m.sort = ms.sort_id
+        and m.second_sort= mss.id
+        <if test="nameOrIdOrSort != null and '' != nameOrIdOrSort">
+            and (m.id = #{nameOrIdOrSort}
+            or m.name like concat('%',#{nameOrIdOrSort},'%')
+            or ms.category like concat('%',#{nameOrIdOrSort},'%'))
+        </if>
+    </select>
+
+    <select id="getDiscountDrugs" resultType="com.yjx.entity.Medicine">
+        select
+        <include refid="medicine"/>
+        ms.`category` sort,
+        mss.`second_sort` secondSort
+        from pharmacy.medicine m,
+        pharmacy.medicine_sort ms,
+        pharmacy.medicine_sort_second mss
+        where m.deleted = 0
+        and ms.deleted=0
+        and mss.deleted=0
+        and m.status = 1
+        and ms.status = 1
+        and mss.status = 1
+        and m.sort = ms.sort_id
+        and m.second_sort= mss.id
+        and m.is_discount = 1
+    </select>
+
+    <select id="getDrugNums" resultType="java.lang.Integer">
+        select count(pm.id)
+        from pharmacy.medicine as pm
+    </select>
+
+</mapper>

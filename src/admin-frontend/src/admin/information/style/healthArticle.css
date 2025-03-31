@@ -1,0 +1,56 @@
+.healthArticle .center {
+  margin: 15px 0;
+  padding: 20px 30px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
+  border-radius: 10px;
+  min-width: 1200px;
+  min-height: 500px;
+  color: #000000a6;
+}
+
+.healthArticle .center .article {
+  width: 1000px;
+  padding: 8px 16px;
+  margin: auto;
+}
+
+.healthArticle .center .article .title {
+  font-size: 28px;
+  font-weight: 550;
+  color: #424141;
+  height: 38px;
+  line-height: 38px;
+  text-align: left;
+}
+
+.healthArticle .center .article .author_origin {
+  height: 38px;
+  line-height: 38px;
+  text-align: left;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.healthArticle .center .article .author_origin span {
+  margin-right: 38px;
+}
+
+.healthArticle .center .article .contents {
+  text-align: left;
+  line-height: 36px;
+  font-size: 16px;
+}
+
+.healthArticle .center .article .reprint_time {
+  text-align: left;
+  height: 38px;
+  line-height: 38px;
+}
+
+.healthArticle .center .article  .likes {
+  float: right;
+  margin-right: 8px;
+}

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yjx.mapper.AdminMapper">
+
+    <select id="selectAdminListInfo" resultType="com.yjx.dto.AdminInfoDto">
+        select a.*,
+        au.authority
+        from pharmacy.admin a,
+        pharmacy.auth au
+        where a.deleted = 0
+        and a.auth = au.auth_id
+        and a.auth in (1, 2)
+        <if test="inputContent != null and '' != inputContent">
+            and (a.id like concat(#{inputContent},'%')
+            or a.username like concat(#{inputContent},'%')
+            or a.phone like concat(#{inputContent},'%')
+            or a.real_name like concat(#{inputContent},'%')
+            or a.email like concat(#{inputContent},'%')
+            or au.authority like concat(#{inputContent},'%')
+            )
+        </if>
+    </select>
+
+    <select id="selectSomeAdminInfo" resultType="com.yjx.entity.Admin">
+        select id, avatar, gender, birthday, phone, address, signature
+        from pharmacy.admin
+        where deleted = 0
+          and id = #{id}
+    </select>
+</mapper>

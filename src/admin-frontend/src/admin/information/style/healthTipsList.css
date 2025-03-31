@@ -1,0 +1,22 @@
+.healthTipsList .center {
+  margin: 15px 0;
+  padding: 23px 30px 38px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
+  border-radius: 10px;
+  min-width: 1200px;
+  min-height: 500px;
+  color: #000000a6;
+}
+
+.healthTipsList .center .el-table .warning-row {
+  background: oldlace;
+}
+
+.healthTipsList .center .el-table .success-row {
+  background: #f0f9eb;
+}
+
+.healthTipsList .center .pagination{
+  margin-top: 18px;
+}

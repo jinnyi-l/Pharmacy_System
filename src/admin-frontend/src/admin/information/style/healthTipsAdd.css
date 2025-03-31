@@ -1,0 +1,53 @@
+.healthTipsAdd .center {
+  margin: 15px 0;
+  padding: 38px 30px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
+  border-radius: 10px;
+  min-width: 1200px;
+  min-height: 500px;
+  color: #000000a6;
+}
+
+.healthTipsAdd .center .link_div,
+.healthTipsAdd .center .link_else {
+  display: inline-block;
+  width: 968px;
+}
+
+.healthTipsAdd .center .link_span {
+  margin-left: 16px;
+}
+
+.healthTipsAdd .center .tag_contents {
+  display: inline-block;
+  position: relative;
+  top: -525px;
+}
+
+.healthTipsAdd .center #editor {
+  width: 96%;
+  display: inline-block;
+}
+
+.healthTipsAdd .center .tag_views {
+  display: inline-block;
+  height: 36px;
+  line-height: 36px;
+}
+
+.healthTipsAdd .center .article_views {
+  border: #000000a6 dashed 1px;
+  padding: 18px 28px;
+  width: 1132px;
+  margin-left: 46px;
+
+}
+
+/* .healthTipsAdd .center .article_views .title {
+  text-align: center;
+} */
+
+.el-select-dropdown {
+  z-index: 100 !important;
+}

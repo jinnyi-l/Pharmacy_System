@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yjx.mapper.ShoppingCartMapper">
+
+    <select id="getCartInfo" resultType="Integer">
+        select count(*)
+        from pharmacy.shopping_cart
+        where drug_name = #{drugName}
+          and username = #{username}
+          and deleted = 0;;
+    </select>
+
+    <select id="getDrugAmount" resultType="java.lang.Integer">
+        select amount
+        from pharmacy.shopping_cart
+        where drug_name = #{drugName}
+          and username = #{username}
+          and deleted = 0;
+    </select>
+
+</mapper>

@@ -1,0 +1,15 @@
+.medicineAdd .center {
+  margin: 15px 0;
+  padding: 20px 30px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
+  border-radius: 10px;
+  min-width: 1200px;
+  min-height: 500px;
+  color: #000000a6;
+}
+
+.medicineAdd .center .medicineAddForm{
+  width: 600px;
+  margin: auto;
+}

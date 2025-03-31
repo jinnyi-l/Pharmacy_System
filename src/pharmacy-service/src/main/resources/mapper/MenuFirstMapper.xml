@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yjx.mapper.MenuFirstMapper">
+
+    <select id="getFirstMenuList" resultType="com.yjx.entity.MenuFirst">
+        select menu_id, title, children
+        from pharmacy.menu_first
+        where status = 1
+          and deleted = 0
+          and need_level in (#{auth}, #{auth} + 1)
+    </select>
+
+
+</mapper>

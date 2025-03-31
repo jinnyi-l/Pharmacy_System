@@ -1,0 +1,40 @@
+.complaintOrder .center {
+  margin: 15px 0;
+  padding: 38px 30px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
+  border-radius: 10px;
+  min-width: 1200px;
+  min-height: 500px;
+  color: #000000a6;
+}
+
+.complaintOrder .center .filter .search{
+  margin-left: 18px;
+}
+
+.complaintOrder .center .filter .addressFilter{
+  margin-left: 10px;
+}
+
+.complaintOrder .center .filter .el-select .el-input {
+  width: 130px;
+}
+
+.complaintOrder .center .filter .input-with-select .el-input-group__prepend {
+  background-color: #fff;
+}
+
+.complaintOrder .center .filter .input-with-select {
+  width: 600px;
+}
+
+
+.complaintOrder .center .table .complaintOrderDetails {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.complaintOrder .center .pagination {
+  margin-top: 10px;
+}

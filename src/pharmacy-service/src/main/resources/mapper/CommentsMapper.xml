@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yjx.mapper.CommentsMapper">
+
+    <select id="getDrugsItemByOrderId" resultType="com.yjx.dto.CommentsDto">
+        select poi.drug_name, poi.picture, poi.gmt_create, poi.order_id, po.username
+        from pharmacy.orders_items as poi,
+             pharmacy.orders as po
+        where poi.order_id = po.order_id
+          and poi.order_id = #{1}
+    </select>
+
+
+    <select id="getCommentsByDrugName" resultType="com.yjx.dto.CommentsDto">
+        select pc.username, pc.gmt_create, pc.comment message, pc.rate
+        from pharmacy.comments as pc
+        where pc.drug_name = #{1}
+        order by pc.gmt_create desc
+    </select>
+
+    <select id="getIdByUsername" resultType="java.lang.Long">
+        select id
+        from pharmacy.user
+        where username = #{1}
+    </select>
+
+    <select id="getAvatar" resultType="java.lang.String">
+        select avatar
+        from pharmacy.user_info
+        where user_id = #{1}
+    </select>
+
+</mapper>

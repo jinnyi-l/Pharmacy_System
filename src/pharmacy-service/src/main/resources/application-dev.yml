@@ -1,0 +1,71 @@
+# DataSource Config
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/pharmacy?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: root
+    password: jennny2001
+
+
+  mvc:
+    throw-exception-if-no-handler-found: true
+    static-path-pattern: /statics/**
+
+  # redis配置
+  redis:
+    database: 0           # Redis服务器数据库
+    host: 127.0.0.1    # Redis服务器地址
+    port: 6379 # Redis服务器连接端口
+    password:           # Redis服务器连接密码（默认为空）
+    timeout: 6000ms       # 连接超时时间（毫秒）
+    jedis:
+      pool:
+        max-active: 200   # 连接池最大连接数（使用负值表示没有限制）
+        max-wait: -1      # 连接池最大阻塞等待时间（使用负值表示没有限制）
+        max-idle: 10      # 连接池中的最大空闲连接
+        min-idle: 0       # 连接池中的最小空闲连接
+#    username: root
+  # 邮箱配置
+  mail:
+    username:
+    password:   # 授权密码,并非邮箱密码
+    host: smtp.qq.com  # SMTP服务器
+    protocol: smtp # 邮箱协议类型
+    default-encoding: utf-8
+    port: 465
+    properties.mail.smtp.ssl.enable: true  # 开启加密验证
+  #   上传大小不超过2MB，不设置默认就是1MB
+  servlet:
+    multipart:
+      max-file-size: 2MB
+      max-request-size: 10MB
+
+# mybatisPlus
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**Mapper.xml
+  global-config:
+    db-config:
+      #logic-delete-field: deleted  # 全局逻辑删除的实体字段名(since 3.3.0,配置后可以忽略不配置@TableLogin注解注字段)
+      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+
+# jwt配置
+yjx:
+  jwt:
+    secret: f4e2e52034348f86b67cde581c0f9eb5
+    expire: 604800  #一星期
+    header: Authorization
+
+# 调试
+logging:
+  level:
+    com:
+      yjx: debug
+
+#  配置文件加解密
+jasypt:
+  encryptor:
+    #加解密的时候使用的密钥
+    password: 2000yjx
+
+

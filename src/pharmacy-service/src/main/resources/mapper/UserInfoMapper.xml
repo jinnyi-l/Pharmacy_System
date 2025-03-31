@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yjx.mapper.UserInfoMapper">
+
+    <sql id="allUserInfo">
+        u.id,
+        username,
+        status,
+        u.gmt_create,
+        a.authority,
+        ui.nick_name,
+        real_name,
+        avatar,
+        gender,
+        birthday,
+        phone,
+        email,
+        address
+    </sql>
+
+    <select id="selectUserListInfo" resultType="com.yjx.dto.NormalUserInfoDto">
+        SELECT
+        <include refid="allUserInfo"/>
+        FROM pharmacy.`user` u,
+        pharmacy.`auth` a,
+        pharmacy.`user_info` ui
+        WHERE u.deleted = 0
+        and u.auth = a.auth_id
+        and u.id = ui.user_id
+        and u.auth = 4
+        <if test="inputContent != null and '' != inputContent">
+            and (u.id like concat(#{inputContent},'%')
+            or u.username like concat(#{inputContent},'%')
+            or ui.phone like concat(#{inputContent},'%')
+            or ui.real_name like concat(#{inputContent},'%')
+            or ui.email like concat(#{inputContent},'%')
+            or ui.address like concat(#{inputContent},'%')
+            )
+        </if>
+    </select>
+
+    <update id="batchDisableUser">
+        UPDATE pharmacy.user
+        set `status` = 0
+        WHERE id in
+        <foreach collection="userIds" item="userId" open="(" close=")" separator=",">
+            #{userId}
+        </foreach>
+    </update>
+
+    <select id="selectVipListInfo" resultType="com.yjx.dto.NormalUserInfoDto">
+        SELECT
+        <include refid="allUserInfo"/>
+        FROM pharmacy.`user` u,
+        pharmacy.`auth` a,
+        pharmacy.`user_info` ui
+        WHERE u.deleted = 0
+        and u.auth = a.auth_id
+        and u.id = ui.user_id
+        and u.auth = 3
+        <if test="inputContent != null and '' != inputContent">
+            and (u.id like concat(#{inputContent},'%')
+            or u.username like concat(#{inputContent},'%')
+            or ui.phone like concat(#{inputContent},'%')
+            or ui.real_name like concat(#{inputContent},'%')
+            or ui.email like concat(#{inputContent},'%')
+            or ui.address like concat(#{inputContent},'%')
+            )
+        </if>
+    </select>
+
+    <select id="getUserInfoByUsername" resultType="com.yjx.dto.UserInfoDto">
+        select u.username,
+               auth,
+               ui.avatar,
+               nick_name,
+               real_name,
+               gender,
+               birthday,
+               phone,
+               email,
+               address
+        from pharmacy.user u,
+             pharmacy.user_info ui
+        where u.id = ui.user_id
+          and u.username = #{username}
+          and u.deleted = 0
+    </select>
+
+</mapper>
