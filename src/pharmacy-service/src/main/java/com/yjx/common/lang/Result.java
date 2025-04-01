@@ -9,10 +9,6 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * @author CodeVerse
- * admin10/11 16:30
- **/
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

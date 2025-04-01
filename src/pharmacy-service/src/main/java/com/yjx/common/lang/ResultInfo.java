@@ -1,9 +1,5 @@
 package com.yjx.common.lang;
 
-
-/**
- * @author CodeVerse
- **/
 public enum ResultInfo {
     /**
      * 操作可能导致的结果
