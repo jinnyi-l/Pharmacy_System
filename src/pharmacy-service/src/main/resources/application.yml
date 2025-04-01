@@ -9,7 +9,7 @@ spring:
     name: defaultDataSource
     url: jdbc:mysql://localhost:3306/pharmacy?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8
     username: root
-    password: jennny2001
+    password: myPassword
 
 qiniu:
   accessKey:
@@ -19,7 +19,7 @@ qiniu:
   zone:
 
 oss:
-  accessKey: REDACTED
-  secretKey: REDACTED
+  accessKey: ${OSS_ACCESS_KEY:defaultAccessKey}
+  secretKey: ${OSS_SECRET_KEY:defaultSecret}
   endpoint: oss-cn-shenzhen.aliyuncs.com
   host: recruit1
