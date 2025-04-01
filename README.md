@@ -2,9 +2,9 @@
 
 This is an online pharmacy management system developed with **Spring Boot (backend)** and **Vue.js (frontend)**.
 
-⚠️ **Note**: Core features like user registration and a public-facing user interface are still under development. The current implementation primarily includes:
-- An **admin interface** for backend operations
-- Backend infrastructure for the user-side interface
+⚠️ **Note**: Core features like user registration and the user interface for customers are still not readt yet. The current implementation primarily includes:
+- An **admin interface** for administrator to monitor the storage and other operations
+- Backend for the user-side interface
 
 
 ### Backend
